@@ -8,6 +8,7 @@ namespace Coursework.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {
+        //создание перменной где будет храниться действующая страница
         [ObservableProperty]
         private ViewModelBase _currentPage;
 
@@ -15,7 +16,9 @@ namespace Coursework.ViewModels
         {
             CurrentPage = new PageZero();
         }
+        
 
+        //Функции для кнопок, которые будут переносить на страницы
         [RelayCommand]
         private void GoPageZero() 
         {

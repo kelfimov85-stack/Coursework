@@ -10,20 +10,37 @@
         Title="Coursework">
 
     <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:MainWindowViewModel/>
+        <vm:MainWindowViewModel>
+        </vm:MainWindowViewModel>
     </Design.DataContext>
+
 
     <Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="200"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        
+        
+        <StackPanel Grid.Column="0" Background="DarkBlue" Opacity="0.7" >
 
-        <StackPanel Grid.Column="0" Background="#dadada">
-            <Button Content="Page 1" Command="{Binding GoPageZeroCommand}" />
-            <Button Content="Page 2" Command="{Binding GoPageOneCommand}" />
+            <!-- Создаем стиль(я не знаю как он называется правильно) для кнопок -->
+             <StackPanel.Styles>
+				<Style Selector="Button">
+                    <Setter Property="Background" Value="Pink"/>
+                    <Setter Property="Width" Value="180"/>
+                    <Setter Property="Height" Value="40"/>
+                    <Setter Property="Opacity" Value="0.95"/>
+                    <Setter Property="HorizontalAlignment" Value="Center"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                    <Setter Property="Margin" Value="5"/>
+                    <Setter Property="FontSize" Value="15"/>
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </Style>
+            </StackPanel.Styles>
+
+                <Button Margin="0 15 0 5" Content="Page 1" Command="{Binding GoPageZeroCommand}" />
+                <Button Content="Page 2" Command="{Binding GoPageOneCommand}" />
         </StackPanel>
 
         <ContentControl Grid.Column="1" Content="{Binding CurrentPage}"/>
