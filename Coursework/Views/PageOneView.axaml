@@ -9,5 +9,9 @@
              x:Class="Coursework.PageOneView"
              x:DataType="viewmodels:PageOne"
              >
-  Welcome to Avaloni!
+            
+             <StackPanel>
+
+            </StackPanel>
+
 </UserControl>
