@@ -10,10 +10,38 @@
              x:DataType="viewmodels:PageOne"
              >
             
-             <StackPanel>
-                 <StackPanel>
-					 
-                 </StackPanel>
+             <StackPanel Background="White">
+                 <StackPanel Margin="0 0 0 20">
+            <TextBox Watermark="Search" Text="{Binding SearchText}"/>
+            <ComboBox ItemsSource="{Binding Categories}" SelectedItem="{Binding SearchCategories}">
+				<ComboBox.ItemTemplate>
+					<DataTemplate>
+						<TextBlock Text="{Binding Name}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <ComboBox ItemsSource="{Binding SortOptions}" SelectedItem="{Binding SortCategory}"/>
+        </StackPanel>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+	          <ListBox ItemsSource="{Binding Products}">
+		            <ListBox.ItemTemplate>
+			            <DataTemplate>
+				            <StackPanel>
+					            <Grid>
+							    <Grid.ColumnDefinitions>
+								    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding Name}"/>
+                                </Grid>
+                                <TextBlock Text="{Binding Price}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </Grid>
             </StackPanel>
 
 </UserControl>

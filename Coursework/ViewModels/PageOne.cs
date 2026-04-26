@@ -17,8 +17,8 @@ namespace Coursework.ViewModels
 
         //создание списков
         private List<Products> _allProducts = new();
-        private ObservableCollection<Products> Products { get; set; } = new();
-        private ObservableCollection<Categories> Categories { get; set; } = new();
+        public ObservableCollection<Products> Products { get; set; } = new();
+        public ObservableCollection<Categories> Categories { get; set; } = new();
 
         [ObservableProperty]
         private string _searchText;
@@ -55,6 +55,7 @@ namespace Coursework.ViewModels
             foreach (var product in await db.Products.ToListAsync()) 
             {
                 Products.Add(product);
+                _allProducts.Add(product);
             }
             foreach (var categorya in await db.Categories.ToListAsync())
             {
