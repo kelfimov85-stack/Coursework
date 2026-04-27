@@ -23,10 +23,7 @@
             <ComboBox ItemsSource="{Binding SortOptions}" SelectedItem="{Binding SortCategory}"/>
         </StackPanel>
         <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
-	          <ListBox ItemsSource="{Binding Products}">
+	          <ListBox ItemsSource="{Binding Products}" Height="800">
 		            <ListBox.ItemTemplate>
 			            <DataTemplate>
 				            <StackPanel>
