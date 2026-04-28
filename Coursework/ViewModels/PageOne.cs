@@ -86,7 +86,7 @@ namespace Coursework.ViewModels
             }
             
             //сортировка по категориям 
-            if (SearchCategories != null && SearchCategories.Id != -1)
+            if (SearchCategories != null && SearchCategories.Id != 8)
             {
                 query = query.Where(p => p.Category.Id == SearchCategories.Id);
             }
