@@ -77,9 +77,15 @@ namespace Coursework.ViewModels
         [RelayCommand]
         public void SaveNewProduct()
         {
-                
+            try
+            {
                 db.Products.Add(newProduct);   // Перевожу сущность в Added
                 db.SaveChanges();     // Вставляю данные в БД
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
     }
