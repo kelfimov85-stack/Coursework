@@ -29,6 +29,11 @@ namespace Coursework.ViewModels
         {
             CurrentPage = new PageOne();
         }
+        [RelayCommand]
+        public void GoPageForAddProducts()
+        {
+            CurrentPage = new PageForAddProducts();
+        }
 
     }
 }
