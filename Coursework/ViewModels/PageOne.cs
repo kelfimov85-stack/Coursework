@@ -41,7 +41,6 @@ namespace Coursework.ViewModels
         public PageOne() 
         {
             LoadData();
-            ApplyFilters();
         }
 
         //Функция для заполнения листов
@@ -55,6 +54,7 @@ namespace Coursework.ViewModels
             foreach (var product in await db.Products.ToListAsync()) 
             {
                 Products.Add(product);
+                _allProducts = await db.Products.ToListAsync();
             }
             foreach (var categorya in await db.Categories.ToListAsync())
             {
