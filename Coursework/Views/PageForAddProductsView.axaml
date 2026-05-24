@@ -13,7 +13,7 @@
 		<TextBox Watermark="Name" Text="{Binding NameNewProduct}"/>
 		<TextBox Watermark="Price" Text="{Binding PriceNewProduct}"/>
 		<TextBox Watermark="Quantity" Text="{Binding QuantityNewProduct}"/>
-		<!-- <TextBox Watermark="Category" Text="{Binding CategoryNewProduct}"/> -->
+		<TextBox Watermark="Category" Text="{Binding CategoryNewProduct}"/> 
         <Button Content="Save" Command="{Binding SaveNewProductCommand}"/>
     </StackPanel>
 
