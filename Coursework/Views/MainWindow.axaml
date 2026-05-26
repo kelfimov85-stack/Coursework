@@ -22,11 +22,11 @@
         </Grid.ColumnDefinitions>
         
         
-        <StackPanel Grid.Column="0" Background="DarkBlue" Opacity="0.7" >
+        <StackPanel Grid.Column="0" Background="DarkBlue" Opacity="0.7">
 
             <!-- Создаем стиль(я не знаю как он называется правильно) для кнопок -->
-             <StackPanel.Styles>
-				<Style Selector="Button">
+              <StackPanel.Styles>
+    		    <Style Selector="Button">
                     <Setter Property="Background" Value="Pink"/>
                     <Setter Property="Width" Value="180"/>
                     <Setter Property="Height" Value="40"/>
@@ -38,13 +38,13 @@
                     <Setter Property="FontWeight" Value="Bold"/>
                 </Style>
             </StackPanel.Styles>
-
-        <StackPanel Grid.Column="0" Background="#dadada">
-            <Button Content="Page 1" Command="{Binding GoPageZeroCommand}" />
-            <Button Content="Page 2" Command="{Binding GoPageOneCommand}" />
-            <Button Content="Page 3" Command="{Binding GoPageForAddProducts}" />
-        </StackPanel>
-
+         
+            <StackPanel Grid.Column="0" Background="#dadada">
+                <Button Content="Page 1" Command="{Binding GoPageZeroCommand}" />
+                <Button Content="Page 2" Command="{Binding GoPageOneCommand}" />
+                <Button Content="Page 3" Command="{Binding GoPageForAddProducts}" />
+            </StackPanel>
+        </StackPanel>  
         <ContentControl Grid.Column="1" Content="{Binding CurrentPage}"/>
     </Grid>
 
