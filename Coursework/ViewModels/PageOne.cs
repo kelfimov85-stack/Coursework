@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Bogus;
 
 namespace Coursework.ViewModels
 {
@@ -40,7 +41,34 @@ namespace Coursework.ViewModels
         //конструктор
         public PageOne() 
         {
-            LoadData();
+            if (0 != Products.Count())
+            {
+                LoadData();
+            }
+            else
+            {
+                int productIdFaker = 0;
+
+                var productFaker = new Faker<Products>("ru")
+                    .RuleFor(p => p.Name, f => f.Commerce.ProductName())
+                    .RuleFor(p => p.Price, f => f.Random.Bool(0.9f)
+                    ? Math.Round(f.Random.Decimal(100, 50000), 2)
+                    : null)
+                    .RuleFor(p => p.Quantity, f => f.Random.Bool(0.95f)
+                    ? f.Random.Number(0, 150)
+                    : null)
+                    .RuleFor(p => p.Category, f => f.Random.Bool(0.95f) // вот здесь ошибка
+                    ? f.PickRandom<Categories>()
+                    : null);
+
+                List<Products> syntheticProducts = productFaker.Generate(10);
+
+                foreach (var product in syntheticProducts)
+                {
+                    db.Products.Add(product);
+                    db.SaveChanges();
+                }
+            }
         }
 
         //Функция для заполнения листов
@@ -53,6 +81,7 @@ namespace Coursework.ViewModels
             //заполнение листов
             foreach (var product in await db.Products.ToListAsync()) 
             {
+
                 Products.Add(product);
                 _allProducts = await db.Products.ToListAsync();
             }
