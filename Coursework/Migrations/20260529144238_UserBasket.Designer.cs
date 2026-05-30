@@ -2,6 +2,7 @@
 using Coursework.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Coursework.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20260529144238_UserBasket")]
+    partial class UserBasket
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,21 +23,6 @@ namespace Coursework.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
-
-            modelBuilder.Entity("BasketProducts", b =>
-                {
-                    b.Property<int>("BasketsId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ProductsBasketId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("BasketsId", "ProductsBasketId");
-
-                    b.HasIndex("ProductsBasketId");
-
-                    b.ToTable("BasketProducts");
-                });
 
             modelBuilder.Entity("Coursework.Models.Basket", b =>
                 {
@@ -116,27 +104,12 @@ namespace Coursework.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<double?>("Wallet")
+                    b.Property<double>("Wallet")
                         .HasColumnType("double precision");
 
                     b.HasKey("Id");
 
                     b.ToTable("User");
-                });
-
-            modelBuilder.Entity("BasketProducts", b =>
-                {
-                    b.HasOne("Coursework.Models.Basket", null)
-                        .WithMany()
-                        .HasForeignKey("BasketsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Coursework.Models.Products", null)
-                        .WithMany()
-                        .HasForeignKey("ProductsBasketId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Coursework.Models.Basket", b =>
@@ -166,7 +139,8 @@ namespace Coursework.Migrations
 
             modelBuilder.Entity("Coursework.Models.User", b =>
                 {
-                    b.Navigation("BasketUser");
+                    b.Navigation("BasketUser")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

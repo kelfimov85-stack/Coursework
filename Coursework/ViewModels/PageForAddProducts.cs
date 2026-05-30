@@ -70,7 +70,7 @@ namespace Coursework.ViewModels
             }
             else
             {
-                newProduct.Category= null;
+                newProduct.Category = null;
             }
         }
 

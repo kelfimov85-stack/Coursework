@@ -32,6 +32,7 @@ namespace Coursework
                 PageZero => new PageZeroView(),
                 PageOne => new PageOneView(),
                 PageForAddProducts => new PageForAddProductsView(),
+                UserReg => new UserRegView(),
                 _ => null
             };
 
