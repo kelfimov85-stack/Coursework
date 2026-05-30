@@ -14,7 +14,7 @@ namespace Coursework.ViewModels
 
         public MainWindowViewModel()
         {
-            CurrentPage = new PageZero();
+            CurrentPage = new UserReg();
         }
         
 
@@ -34,6 +34,5 @@ namespace Coursework.ViewModels
         {
             CurrentPage = new PageForAddProducts();
         }
-
     }
 }

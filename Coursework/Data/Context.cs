@@ -12,6 +12,8 @@ namespace Coursework.Data
     {
         public DbSet<Products> Products { get; set; }
         public DbSet<Categories> Categories { get; set; }
+        public DbSet<User> User { get; set; }
+        public DbSet<Basket> Basket { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

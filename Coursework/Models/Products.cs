@@ -14,5 +14,6 @@ namespace Coursework.Models
         public decimal? Price { get; set; }
         public int? Quantity { get; set; }
         public Categories? Category { get; set; }
+        public List<Basket> Baskets { get; set; }
     }
 }
