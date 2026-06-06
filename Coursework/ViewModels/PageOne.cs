@@ -23,12 +23,13 @@ namespace Coursework.ViewModels
         public ObservableCollection<Categories> Categories { get; set; } = new();
 
         [ObservableProperty]
+        private int _count;
+        [ObservableProperty]
         private string _searchText;
         [ObservableProperty]
         private Categories _searchCategories;
         [ObservableProperty]
         private string _sortCategory;
-
         
         public List<string> SortOptions { get; } = new()
         {
@@ -109,7 +110,6 @@ namespace Coursework.ViewModels
             //заполнение листов
             foreach (var product in db.Products.ToList()) 
             {
-
                 Products.Add(product);
                 _allProducts = await db.Products.ToListAsync();
             }
@@ -117,19 +117,24 @@ namespace Coursework.ViewModels
             {
                 Categories.Add(categorya);
             }
+
+            Count = _allProducts.Count;
         }
 
         partial void OnSearchTextChanged(string value)
         {
             ApplyFilters();
+            Count = Products.Count;
         }
         partial void OnSortCategoryChanged(string value)
         {
             ApplyFilters();
+            Count = Products.Count;
         }
         partial void OnSearchCategoriesChanged(Categories value)
         {
             ApplyFilters();
+            Count = Products.Count;
         }
 
         public void ApplyFilters()
